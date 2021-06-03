@@ -1,0 +1,54 @@
+{
+  "name": "tesbot",
+  "version": "0.0.1",
+  "description": "bjir copaster up sc di githup",
+  "main": "main.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "author": "kang copas",
+  "dependencies": {
+    "@adiwajshing/baileys": "^3.4.1",
+    "@yimura/scraper": "^1.2.2",
+    "amethyste-api": "^1.1.5",
+    "awesome-phonenumber": "^2.51.2",
+    "axios": "^0.21.1",
+    "browser-id3-writer": "^4.4.0",
+    "cheerio": "^0.22.0",
+    "emoji-api": "^1.0.2",
+    "error": "^10.4.0",
+    "figlet": "^1.5.0",
+    "file-type": "^16.3.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "form-data": "^2.3.3",
+    "got": "^11.8.2",
+    "image-to-base64": "^2.2.0",
+    "imgbb-uploader": "^1.3.1",
+    "kaori": "^2.0.4",
+    "moment-timezone": "^0.5.33",
+    "nekos.life": "^2.0.7",
+    "node-cron": "^3.0.0",
+    "node-fetch": "^2.6.1",
+    "ra-api": "^1.2.7",
+    "remove.bg": "^1.3.0",
+    "request": "^2.88.2",
+    "responselike": "^2.0.0",
+    "sfwbooru": "^0.0.2",
+    "syntax": "^1.6.2",
+    "syntax-error": "^1.4.0",
+    "yt-search": "^2.8.0",
+    "ytdl-core": "^4.8.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akkun3704/tesbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Akkun3704/tesbot/issues"
+  },
+  "homepage": "https://github.com/Akkun3704/tesbot#readme"
+}
