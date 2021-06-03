@@ -20,7 +20,6 @@ const { search } = require('kaori')
 const speed = require('performance-now')
 const imageToBase64 = require('image-to-base64')
 const figlet = require('figlet')
-const getEmoji = require('./lib/emoji-api')
 const axios = require('axios');
 const fs = require('fs')
 const os = require('os');
@@ -146,8 +145,7 @@ module.exports = client = async (client, mek) => {
 			const isCmd = body.startsWith(prefix)
 			const arg = body.substring(body.indexOf(' ') + 1)
 			const q = args.join(' ')
-			const more = String.fromCharCode(10)
-	    const readmore = more.repeat(1000)
+
 
 			mess = {
 				wait: 'Loading...',
@@ -475,10 +473,8 @@ const freply = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from
 				public = true
 				reply(`_Publik Mode_`)
 			}
-			if (budy.startsWith('Oh')){
-				options = { contextInfo: { participant: botNumber, remoteJid: from, quotedMessage: { extendedTextMessage: { text: "Pesan ini telah dihapus", }}}}
-				client.sendMessage(from, fs.readFileSync('undefined.webp'), sticker, options)
-				}
+
+				
 			if (budy.startsWith('..')){
 				console.log(color('[ EVAL ]', rainbow), color(time, rainbow), color(budy, rainbow), 'from', color(pushname, rainbow))
 				try{
@@ -1568,7 +1564,7 @@ exec(`ffmpeg -i ${ehgmediabi} ${ran}`, (err) => {
 				boij = JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
 				delb = await client.downloadMediaMessage(boij)
 				fs.writeFileSync(`./media/aqul.jpeg`, delb)
-				fakeimage = fs.readFileSync(`./media/aqul.jpeg`).toString('base64')
+				fakeimage = fs.readFileSync(`./src/aqul.jpeg`)
 				reply(mess.success)
 				break
 				case 'setprefix':
