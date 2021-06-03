@@ -19,7 +19,6 @@ const { webp2gifFile } = require("./lib/gif.js")
 const speed = require('performance-now')
 const imageToBase64 = require('image-to-base64')
 const figlet = require('figlet')
-const getEmoji = require('./lib/emoji-api')
 const axios = require('axios');
 const fs = require('fs')
 const os = require('os');
