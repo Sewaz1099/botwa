@@ -65,7 +65,7 @@ const PhoneNumber = require('awesome-phonenumber')
 const simple = require('./lib/simple.js')
 //const WAConnection = simple.WAConnection(_WAConnection)
 
-let setting = fse.readJsonSync('./lib/setting.json')
+let setting = fse.readJsonSync('./lib/settings.json')
 const revoke = fse.readJsonSync('./src/antirevoke.json')
 let fitur = fse.readJsonSync('./src/fitur.json')
 let _afk = fse.readJsonSync('./src/afk.json')
