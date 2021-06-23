@@ -1,33 +1,32 @@
 const { WAConnection: _WAConnection, MessageType, Presence, Mimetype, Browsers } = require('@adiwajshing/baileys')
 const { color } = require('./lib/color')
 const { qrcode, error } = require("qrcode-terminal")
-const fs = require('fs')
+const fs = require('fs-extra')
 const figlet = require('figlet')
 const moment = require('moment-timezone')
 const simple = require('./lib/simple.js')
 const WAConnection = simple.WAConnection(_WAConnection)
 
-let revoke = JSON.parse(fs.readFileSync('./src/antirevoke.json'))
-let fakeimage = fs.readFileSync("./src/aqul.jpeg")
+const revoke = fs.readJsonSync('./src/antirevoke.json')
+let fakeimage = fs.readFileSync("./media/aqul.jpeg")
 blocked = []
 		
 require('./index.js')
 nocache('./index.js', module => console.log(color(`${module} is now updated!`)))
+require('./main.js')
+nocache('./main.js', module => console.log(color(`${module} is now updated!`)))
+require('./src/antirevoke.json')
+nocache('./src/antirevoke.json', module => console.log(color(`${module} is now updated!`)))
 
 const starts = async (client = new WAConnection()) => {
   let authofile = './session.json'
   client.logger.level = 'warn'
-  client.browserDescription=Browsers.appropriate("Firefox")
-	console.log(color(figlet.textSync('WhatsApp Bot', {
-		font: 'Standard',
-		horizontalLayout: 'default',
-		vertivalLayout: 'default',
-		width: 80,
-		whitespaceBreak: false
-	}), 'cyan'))
+  client.browserDescription = ['Okoklah','Firefox','3.0']
+  client.version = [2, 2119, 6]
+	console.log(color(figlet.textSync('WhatsApp Bot', { font: 'Standard', horizontalLayout: 'default', vertivalLayout: 'default', width: 80, whitespaceBreak: false }), 'cyan'))
 	console.log(color('[ Recode By Me ]'))
 	client.on('qr', qr => {
-        //qrcode.generate(qr, { small: true })
+        qrcode.generate(qr, { small: true })
         console.log(color('[ BOT ]'), color('Scan Qr'))
     })
 	fs.existsSync(authofile) && client.loadAuthInfo(authofile)
@@ -70,8 +69,8 @@ client.on('message-delete', async (m) => {
     jem = moment.tz('Asia/Jakarta').format('HH:mm:ss')
     tgl = new Date
     time = tgl.toLocaleDateString('id', { day: 'numeric', month: 'long', year: 'numeric' })
-    krah = await client.sendMessage(m.key.remoteJid, `「 *ANTIDELETE* 」\n\n• *Name:* ${client.getName(m.participant, true)}\n• *Number:* @${m.participant.split("@")[0]}\n• *Time:* ${jem}\n• *Date:* ${time}\n\n_Pesan yg dihapus, terlampir di bawah_`, MessageType.text, {thumbnail: fakeimage, quoted: m.message, contextInfo: {"mentionedJid": [m.participant]}})
-     client.copyNForward(m.key.remoteJid, m.message, true, {quoted: krah, sendEphemeral:true, thumbnail:fakeimage}).catch(e => console.log(e, m))
+    krah = await client.sendMessage(m.key.remoteJid, `「 *ANTIDELETE* 」\n\n• *Name:* ${client.getName(m.participant, true)}\n• *Number:* @${m.participant.split("@")[0]}\n• *Time:* ${jem}\n• *Date:* ${time}\n\n_Pesan yg dihapus, terlampir di bawah_`, MessageType.text, {sendEphemeral: true, quoted: m.message, contextInfo: {"mentionedJid": [m.participant]}})
+     client.copyNForward(m.key.remoteJid, m.message, true, {quoted: krah, sendEphemeral:true}).catch(e => console.log(e, m))
     console.log(m.message)
     })
 }
